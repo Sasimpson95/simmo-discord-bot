@@ -40,6 +40,36 @@ let youtubeCheckRunning = false;
 let twitchCheckRunning = false;
 let aoe4worldCheckRunning = false;
 
+const AOE4_CIVILIZATIONS = [
+  'Abbasid Dynasty',
+  'Ayyubids',
+  'Byzantines',
+  'Chinese',
+  'Delhi Sultanate',
+  'English',
+  'French',
+  'Golden Horde',
+  'House of Lancaster',
+  'Holy Roman Empire',
+  'Japanese',
+  "Jeanne d'Arc",
+  'Jin Dynasty',
+  'Knights Templar',
+  'Macedonian Dynasty',
+  'Malians',
+  'Mongols',
+  'Order of the Dragon',
+  'Ottomans',
+  'Rus',
+  'Sengoku Daimyo',
+  'Tughlaq Dynasty',
+  "Zhu Xi's Legacy"
+];
+
+function randomCivilization() {
+  return AOE4_CIVILIZATIONS[Math.floor(Math.random() * AOE4_CIVILIZATIONS.length)];
+}
+
 function recordText(aoe4) {
   const total = aoe4.wins + aoe4.losses;
   const winRate = total ? ((aoe4.wins / total) * 100).toFixed(1) : '0.0';
@@ -279,6 +309,39 @@ client.once(Events.ClientReady, async readyClient => {
 
 client.on(Events.InteractionCreate, async interaction => {
   if (!interaction.isChatInputCommand()) return;
+
+
+  if (interaction.commandName === 'random') {
+    const civilization = randomCivilization();
+    await interaction.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setTitle('🎲 Random Age IV Civilization')
+          .setDescription(`You got **${civilization}**!
+
+No rerolls. 😈`)
+      ]
+    });
+    return;
+  }
+
+  if (interaction.commandName === 'commands') {
+    await interaction.reply({
+      embeds: [
+        new EmbedBuilder()
+          .setTitle('🤖 Simmo Bot Commands')
+          .setDescription([
+            '`/record` — Show the current automatic Age IV W/L record and streak',
+            '`/random` — Pick a random Age IV civilization to play',
+            '`/win` — Manually add a win (backup)',
+            '`/loss` — Manually add a loss (backup)',
+            '`/reset-record confirm:true` — Reset the tracked W/L record (Manage Server only)',
+            '`/commands` — Show this command list'
+          ].join('\n'))
+      ]
+    });
+    return;
+  }
 
   if (interaction.commandName === 'record') {
     const { aoe4 } = loadState();

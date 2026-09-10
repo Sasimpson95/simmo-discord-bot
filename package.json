@@ -1,6 +1,6 @@
 {
   "name": "simmo-aoe4-discord-bot",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "private": true,
   "type": "module",
   "description": "Discord bot for Simmo7519 YouTube uploads, siimmoo Twitch live alerts, and automatic Age of Empires IV W/L tracking via AoE4World.",

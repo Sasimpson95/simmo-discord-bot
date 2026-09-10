@@ -113,3 +113,9 @@ You do not need to run `npm run register` because the slash command names have n
 ## Hosting note
 
 The bot currently runs only while the Node process is running. For true automatic 24/7 monitoring, deploy it to a host with a persistent process and persistent storage, or move the state to a hosted database such as Supabase.
+
+
+## V1.4 commands
+
+- `/commands` — show all bot commands
+- `/random` — pick a random current Age of Empires IV civilization

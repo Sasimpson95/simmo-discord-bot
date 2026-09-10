@@ -13,6 +13,8 @@ const commands = [
   new SlashCommandBuilder().setName('win').setDescription('Add an Age of Empires IV win'),
   new SlashCommandBuilder().setName('loss').setDescription('Add an Age of Empires IV loss'),
   new SlashCommandBuilder().setName('record').setDescription('Show the current Age of Empires IV record'),
+  new SlashCommandBuilder().setName('random').setDescription('Pick a random Age of Empires IV civilization'),
+  new SlashCommandBuilder().setName('commands').setDescription('Show all available Simmo Bot commands'),
   new SlashCommandBuilder()
     .setName('reset-record')
     .setDescription('Reset the Age of Empires IV record')
